@@ -2,7 +2,7 @@ export interface Shipment{
     shipmentId: string,
     trackingKey: TrackingKey,
     states: State[],
-    createdAt: Date
+    createdAt: string
 }
 
 export interface TrackingKey{

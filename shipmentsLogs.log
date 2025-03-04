@@ -129,3 +129,4 @@
 [2025-03-04T14:48:22.807] [DEBUG] default - Called createNewShipment function in the controller
 [2025-03-04T14:48:35.142] [DEBUG] default - Called createNewShipment function in the controller
 [2025-03-04T14:48:42.638] [DEBUG] default - Called createNewShipment function in the controller
+[2025-03-04T15:46:46.585] [INFO] default - Called getAllShipments function in the controller

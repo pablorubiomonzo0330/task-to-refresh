@@ -6,10 +6,11 @@ import KafkaProducer from "../messaging/kafkaProducer";
 
 export default class Validator{
 
-    public static async validateShipmentSchema(shipment: Shipment){
+    public static async validateShipmentSchema(shipment: unknown){
         const errors =  validate(shipment, ShipmentSchema).errors
         const reasons = errors.map((error: Error) => error.stack)
         if (reasons && reasons.length > 0){
+            console.log("failing")
             const kafkaProducer = new KafkaProducer()
             await kafkaProducer.postMessageInTopic(`Tried to save shipment with wrong fields in the database, posting it in DLQ. Shipment => ${JSON.stringify(shipment)}`, "shipments-dlq")
             throw new ValidationError(reasons.toString())
