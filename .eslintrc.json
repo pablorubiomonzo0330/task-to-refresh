@@ -1,0 +1,64 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "overrides": [
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "check-file",
+    "filenames-simple"
+  ],
+  "rules": {
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true, // don"t want to sort import lines, use eslint-plugin-import instead
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": true
+      }
+    ],
+    "indent": [
+      "error",
+      4
+    ],
+    "quotes": [
+      "off",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "filenames-simple/naming-convention": [
+      "error",
+      {
+        "rule": "camelCase" // ts files
+      }
+    ],
+    "check-file/folder-match-with-fex": [
+      "error",
+      {
+        "*.spec.ts": "**/tests/unittest/**",
+        "*.it.ts": "**/tests/integrationtest/**"
+      }
+    ],
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.js": "KEBAB_CASE" // do not work for json file extension
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shipment",
+  "description": "A shipment in our database",
+  "type": "object",
+  "properties": {
+    "trackingKey": {
+      "type": "object",
+      "description": "Represents the carrier and trackingNumber of the shipment",
+      "properties": {
+        "carrier": {
+          "type": "string",
+          "description": "Name of the carrier in charge of this shipment"
+        },
+        "trackingNumber": {
+          "type": "string",
+          "description": "Unique identifier of the shipment in the carriers system"
+        }
+      }
+    },
+    "states":{
+      "type": "array",
+      "description": "Contains all of the states set for this shipment",
+      "items": {
+        "type": "object",
+        "properties": {
+          "titleOfState":{
+            "type": "string",
+            "description": "Title of the state"
+          } ,
+          "createdAt": {
+            "type": "string",
+            "description": "Date at which the state was added",
+            "pattern": "\\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2]\\d|3[0-1])T(?:[0-1]\\d|2[0-3]):[0-5]\\d:[0-5]\\dZ"
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "Date at which the shipment was created",
+      "pattern": "\\d{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2]\\d|3[0-1])T(?:[0-1]\\d|2[0-3]):[0-5]\\d:[0-5]\\dZ"
+    }
+  },
+  "required": ["trackingKey","createdAt", "states"]
+}
+
