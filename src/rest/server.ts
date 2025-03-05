@@ -20,6 +20,7 @@ appExpress.listen(3000, async () => {
     try{
         await DatabaseClientProvider.initConnection()
     } catch(error: any){
+        console.log(error)
         logger.fatal(`Fatal error: ${error.stack? error.stack : error.toString()}`)
     }
 })
