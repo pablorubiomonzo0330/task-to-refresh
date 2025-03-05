@@ -84,3 +84,13 @@ services:
     restart: always
 networks:
   kafka-network:
+#    curl -X GET http://localhost:3000/shipments \
+#    -H "Content-Type: application/json" \
+#    -d '{
+#    "trackingKey": {
+#      "carrier": "DHL",
+#      "trackingNumber": "00234340394"
+#    },
+#    "states": [ ],
+#    "createdAt": "2023-11-02T11:38:45Z"
+#}'
