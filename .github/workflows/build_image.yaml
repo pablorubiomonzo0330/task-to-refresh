@@ -26,3 +26,4 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: echo ${{ secrets.DOCKER_PAT }} | docker login -u rmpablo1 --password-stdin
+      - run: docker build -t rmpablo1/application
