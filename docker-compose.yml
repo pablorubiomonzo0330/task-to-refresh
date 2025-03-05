@@ -62,20 +62,34 @@ services:
     networks:
       - "kafka-network"
   kafka-consumer:
-    image: "kafka-consumer2"
+    build: .
+    command: nodemon ./src/messaging/kafkaConsumer.ts
     depends_on:
       - kafka-broker-1
       - kafka-broker-2
       - kafka-broker-3
+      - mongodb
     networks:
       - "kafka-network"
+    restart: always
   dlq-kafka-consumer:
-    image: "dlq-kafka-consumer"
+    build: .
+    command: nodemon ./src/messaging/kafkaDLQConsumer.ts
     depends_on:
       - kafka-broker-1
       - kafka-broker-2
       - kafka-broker-3
     networks:
       - "kafka-network"
+    restart: always
+  producer:
+    build: .
+    command: nodemon ./src/rest/server.ts
+    depends_on:
+      - kafka-broker-1
+      - kafka-broker-2
+      - kafka-broker-3
+      - mongodb
+    restart: always
 networks:
   kafka-network:
