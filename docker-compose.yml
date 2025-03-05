@@ -82,14 +82,5 @@ services:
     networks:
       - "kafka-network"
     restart: always
-  producer:
-    build: .
-    command: nodemon ./src/rest/server.ts
-    depends_on:
-      - kafka-broker-1
-      - kafka-broker-2
-      - kafka-broker-3
-      - mongodb
-    restart: always
 networks:
   kafka-network:
