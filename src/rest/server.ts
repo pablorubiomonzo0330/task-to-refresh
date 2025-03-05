@@ -15,6 +15,13 @@ appExpress.use((err: any, req: Request, res: Response, next: NextFunction) => {
         res.status(500).send(err.message)
     }
 })
+appExpress.on('error', () =>  {
+
+})
 appExpress.listen(3000, async () => {
-    await DatabaseClientProvider.initConnection()
+    try{
+        await DatabaseClientProvider.initConnection()
+    } catch(error: any){
+        logger.fatal(`Fatal error: ${error.stack? error.stack : error.toString()}`)
+    }
 })
