@@ -82,5 +82,17 @@ services:
     networks:
       - "kafka-network"
     restart: always
+  application:
+    image: "rmpablo1/application:latest"
+    networks:
+      - "kafka-network"
+    depends_on:
+      - mongodb
+      - kafka-broker-3
+      - kafka-broker-2
+      - kafka-broker-1
+      - kafka-consumer
+      - dlq-kafka-consumer
+      - zookeeper
 networks:
   kafka-network:
